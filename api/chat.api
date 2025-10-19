@@ -1,0 +1,93 @@
+syntax = "v1"
+
+info (
+	title:   "Go-Chat API"
+	version: "1.0"
+)
+
+// --- 用户 ---
+type (
+	LoginReq {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+	LoginReply {
+		Token string `json:"token"`
+	}
+	RegisterReq {
+		Username string `json:"username"`
+		Password string `json:"password"`
+		Nickname string `json:"nickname"`
+	}
+	RegisterReply {
+		UserId string `json:"userId"`
+		Token  string `json:"token"`
+	}
+)
+
+@server (
+	group: user
+)
+service chat-api {
+	@doc "用户登录"
+	@handler login
+	post /user/login (LoginReq) returns (LoginReply)
+
+	@doc "用户注册"
+	@handler register
+	post /user/register (RegisterReq) returns (RegisterReply)
+}
+
+// --- 消息 ---
+// 获取历史记录
+type (
+	Message {
+		MsgId      string `json:"msgId"`
+		FromUserId string `json:"fromUserId"`
+		ToUserId   string `json:"toUserId"`
+		Content    string `json:"content"`
+		CreateTime int64  `json:"createTime"`
+	}
+	StoreMessageRequest {
+		Msg Message `json:"msg"`
+	}
+	StoreMessageResponse {
+		MsgId string `json:"msgId"`
+	}
+	GetHistoryReq {
+		UserId   string `json:"userId"`
+		TargetId string `json:"targetId"`
+		StartSeq int64  `json:"startSeq"`
+		Count    int32  `json:"count"`
+	}
+	GetHistoryReply {
+		Msgs []Message `json:"msgs"`
+	}
+)
+
+@server (
+	jwt:   Auth // 假设需要登录认证
+	group: message
+)
+service chat-api {
+	@doc "获取历史消息"
+	@handler getHistory
+	get /message/history (GetHistoryReq) returns (GetHistoryReply)
+}
+
+// WebSocket
+// 【不使用 @handler, 因为go-zero默认的handler是HTTP的，需要自定义一个handler来升级到WebSocket
+type (
+	WsReq  {}
+)
+
+@server (
+	jwt:   Auth // 连接时需要token认证
+	group: websocket
+)
+service chat-api {
+	@doc "WebSocket 连接"
+	@handler wsChat
+	get /ws (WsReq)
+}
+
