@@ -5,6 +5,9 @@ Etcd:
   - 127.0.0.1:2379
   Key: user.rpc
 
+# Auth:
+#   AccessSecret: "verylongsecretkey"  # 自定义一串随机字符串
+#   AccessExpire: 86400                # token 过期时间（单位秒）
 
-Mysql:
-  DataSource: root:123456@tcp(localhost:3306)/gochat
+DataSource: root:123456@tcp(localhost:3306)/gochat
+Table: user

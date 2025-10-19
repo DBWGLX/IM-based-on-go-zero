@@ -8,20 +8,20 @@ info (
 // --- 用户 ---
 type (
 	LoginReq {
-		Username string `json:"username"`
+		Account  string `json:"account"`
 		Password string `json:"password"`
 	}
 	LoginReply {
 		Token string `json:"token"`
 	}
 	RegisterReq {
+		Account  string `json:"account"`
 		Username string `json:"username"`
 		Password string `json:"password"`
-		Nickname string `json:"nickname"`
 	}
 	RegisterReply {
-		UserId string `json:"userId"`
-		Token  string `json:"token"`
+		Account string `json:"account"`
+		Token   string `json:"token"`
 	}
 )
 

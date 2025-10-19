@@ -8,7 +8,7 @@ import (
 
 	message "go-chat/api/internal/handler/message"
 	user "go-chat/api/internal/handler/user"
-	websocketLogic "go-chat/api/internal/handler/websocketLogic"
+	websocket "go-chat/api/internal/handler/websocket"
 	"go-chat/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -24,7 +24,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: message.GetHistoryHandler(serverCtx),
 			},
 		},
-		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		//rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
@@ -50,9 +50,9 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				// WebSocket 连接
 				Method:  http.MethodGet,
 				Path:    "/ws",
-				Handler: websocketLogic.WsChatHandler(serverCtx),
+				Handler: websocket.WsChatHandler(serverCtx),
 			},
 		},
-		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+		// rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 }

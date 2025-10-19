@@ -8,6 +8,7 @@ import (
 
 	"go-chat/api/internal/svc"
 	"go-chat/api/internal/types"
+	"go-chat/user/userclient"
 
 	"github.com/zeromicro/go-zero/core/logx"
 )
@@ -27,8 +28,19 @@ func NewRegisterLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Register
 	}
 }
 
-func (l *RegisterLogic) Register(req *types.RegisterReq) (resp *types.RegisterReply, err error) {
+func (l *RegisterLogic) Register(req *types.RegisterReq) (*types.RegisterReply, error) {
 	// todo: add your logic here and delete this line
+	resp, err := l.svcCtx.UserRpc.Register(l.ctx, &userclient.RegisterRequest{
+		Username: req.Username,
+		Account:  req.Account,
+		Password: req.Password,
+	})
+	if err != nil {
+		return nil, err
+	}
 
-	return
+	return &types.RegisterReply{
+		Account: resp.Account,
+		Token:   resp.Token,
+	}, nil
 }

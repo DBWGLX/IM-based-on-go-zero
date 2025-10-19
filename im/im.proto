@@ -35,7 +35,7 @@ message GetHistoryResponse{
 }
 
 //IM服务
-service IM{
+service IMService{
     rpc StoreMessage(StoreMessageRequest) returns (StoreMessageResponse);
     rpc GetHistory(GetHistoryRequest) returns (GetHistoryResponse);
 }

@@ -2,7 +2,7 @@
 // goctl 1.9.2
 // Source: im.proto
 
-package imclient
+package imservice
 
 import (
 	"context"
@@ -20,28 +20,28 @@ type (
 	StoreMessageRequest  = im.StoreMessageRequest
 	StoreMessageResponse = im.StoreMessageResponse
 
-	IM interface {
+	IMService interface {
 		StoreMessage(ctx context.Context, in *StoreMessageRequest, opts ...grpc.CallOption) (*StoreMessageResponse, error)
 		GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error)
 	}
 
-	defaultIM struct {
+	defaultIMService struct {
 		cli zrpc.Client
 	}
 )
 
-func NewIM(cli zrpc.Client) IM {
-	return &defaultIM{
+func NewIMService(cli zrpc.Client) IMService {
+	return &defaultIMService{
 		cli: cli,
 	}
 }
 
-func (m *defaultIM) StoreMessage(ctx context.Context, in *StoreMessageRequest, opts ...grpc.CallOption) (*StoreMessageResponse, error) {
+func (m *defaultIMService) StoreMessage(ctx context.Context, in *StoreMessageRequest, opts ...grpc.CallOption) (*StoreMessageResponse, error) {
 	client := im.NewIMServiceClient(m.cli.Conn())
 	return client.StoreMessage(ctx, in, opts...)
 }
 
-func (m *defaultIM) GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error) {
+func (m *defaultIMService) GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error) {
 	client := im.NewIMServiceClient(m.cli.Conn())
 	return client.GetHistory(ctx, in, opts...)
 }

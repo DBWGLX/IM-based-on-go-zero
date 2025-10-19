@@ -19,7 +19,7 @@ type LoginReply struct {
 }
 
 type LoginReq struct {
-	Username string `json:"username"`
+	Account  string `json:"account"`
 	Password string `json:"password"`
 }
 
@@ -32,14 +32,14 @@ type Message struct {
 }
 
 type RegisterReply struct {
-	UserId string `json:"userId"`
-	Token  string `json:"token"`
+	Account string `json:"account"`
+	Token   string `json:"token"`
 }
 
 type RegisterReq struct {
+	Account  string `json:"account"`
 	Username string `json:"username"`
 	Password string `json:"password"`
-	Nickname string `json:"nickname"`
 }
 
 type StoreMessageRequest struct {

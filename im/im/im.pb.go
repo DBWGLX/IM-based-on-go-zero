@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.10
 // 	protoc        v3.6.1
-// source: im/im.proto
+// source: im.proto
 
 package im
 
@@ -35,7 +35,7 @@ type Message struct {
 
 func (x *Message) Reset() {
 	*x = Message{}
-	mi := &file_im_im_proto_msgTypes[0]
+	mi := &file_im_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -47,7 +47,7 @@ func (x *Message) String() string {
 func (*Message) ProtoMessage() {}
 
 func (x *Message) ProtoReflect() protoreflect.Message {
-	mi := &file_im_im_proto_msgTypes[0]
+	mi := &file_im_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -60,7 +60,7 @@ func (x *Message) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Message.ProtoReflect.Descriptor instead.
 func (*Message) Descriptor() ([]byte, []int) {
-	return file_im_im_proto_rawDescGZIP(), []int{0}
+	return file_im_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Message) GetMsgId() string {
@@ -108,7 +108,7 @@ type StoreMessageRequest struct {
 
 func (x *StoreMessageRequest) Reset() {
 	*x = StoreMessageRequest{}
-	mi := &file_im_im_proto_msgTypes[1]
+	mi := &file_im_proto_msgTypes[1]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -120,7 +120,7 @@ func (x *StoreMessageRequest) String() string {
 func (*StoreMessageRequest) ProtoMessage() {}
 
 func (x *StoreMessageRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_im_im_proto_msgTypes[1]
+	mi := &file_im_proto_msgTypes[1]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -133,7 +133,7 @@ func (x *StoreMessageRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreMessageRequest.ProtoReflect.Descriptor instead.
 func (*StoreMessageRequest) Descriptor() ([]byte, []int) {
-	return file_im_im_proto_rawDescGZIP(), []int{1}
+	return file_im_proto_rawDescGZIP(), []int{1}
 }
 
 func (x *StoreMessageRequest) GetMsg() *Message {
@@ -152,7 +152,7 @@ type StoreMessageResponse struct {
 
 func (x *StoreMessageResponse) Reset() {
 	*x = StoreMessageResponse{}
-	mi := &file_im_im_proto_msgTypes[2]
+	mi := &file_im_proto_msgTypes[2]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -164,7 +164,7 @@ func (x *StoreMessageResponse) String() string {
 func (*StoreMessageResponse) ProtoMessage() {}
 
 func (x *StoreMessageResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_im_im_proto_msgTypes[2]
+	mi := &file_im_proto_msgTypes[2]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -177,7 +177,7 @@ func (x *StoreMessageResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use StoreMessageResponse.ProtoReflect.Descriptor instead.
 func (*StoreMessageResponse) Descriptor() ([]byte, []int) {
-	return file_im_im_proto_rawDescGZIP(), []int{2}
+	return file_im_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *StoreMessageResponse) GetMsgId() string {
@@ -200,7 +200,7 @@ type GetHistoryRequest struct {
 
 func (x *GetHistoryRequest) Reset() {
 	*x = GetHistoryRequest{}
-	mi := &file_im_im_proto_msgTypes[3]
+	mi := &file_im_proto_msgTypes[3]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -212,7 +212,7 @@ func (x *GetHistoryRequest) String() string {
 func (*GetHistoryRequest) ProtoMessage() {}
 
 func (x *GetHistoryRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_im_im_proto_msgTypes[3]
+	mi := &file_im_proto_msgTypes[3]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -225,7 +225,7 @@ func (x *GetHistoryRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHistoryRequest.ProtoReflect.Descriptor instead.
 func (*GetHistoryRequest) Descriptor() ([]byte, []int) {
-	return file_im_im_proto_rawDescGZIP(), []int{3}
+	return file_im_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *GetHistoryRequest) GetUserId() string {
@@ -265,7 +265,7 @@ type GetHistoryResponse struct {
 
 func (x *GetHistoryResponse) Reset() {
 	*x = GetHistoryResponse{}
-	mi := &file_im_im_proto_msgTypes[4]
+	mi := &file_im_proto_msgTypes[4]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -277,7 +277,7 @@ func (x *GetHistoryResponse) String() string {
 func (*GetHistoryResponse) ProtoMessage() {}
 
 func (x *GetHistoryResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_im_im_proto_msgTypes[4]
+	mi := &file_im_proto_msgTypes[4]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -290,7 +290,7 @@ func (x *GetHistoryResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use GetHistoryResponse.ProtoReflect.Descriptor instead.
 func (*GetHistoryResponse) Descriptor() ([]byte, []int) {
-	return file_im_im_proto_rawDescGZIP(), []int{4}
+	return file_im_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *GetHistoryResponse) GetMsgs() []*Message {
@@ -300,11 +300,11 @@ func (x *GetHistoryResponse) GetMsgs() []*Message {
 	return nil
 }
 
-var File_im_im_proto protoreflect.FileDescriptor
+var File_im_proto protoreflect.FileDescriptor
 
-const file_im_im_proto_rawDesc = "" +
+const file_im_proto_rawDesc = "" +
 	"\n" +
-	"\vim/im.proto\x12\x02im\"\x95\x01\n" +
+	"\bim.proto\x12\x02im\"\x95\x01\n" +
 	"\aMessage\x12\x14\n" +
 	"\x05msgId\x18\x01 \x01(\tR\x05msgId\x12\x1e\n" +
 	"\n" +
@@ -325,39 +325,39 @@ const file_im_im_proto_rawDesc = "" +
 	"\bstartSeq\x18\x03 \x01(\x03R\bstartSeq\x12\x14\n" +
 	"\x05count\x18\x04 \x01(\x05R\x05count\"5\n" +
 	"\x12GetHistoryResponse\x12\x1f\n" +
-	"\x04msgs\x18\x01 \x03(\v2\v.im.MessageR\x04msgs2\x84\x01\n" +
-	"\x02IM\x12A\n" +
+	"\x04msgs\x18\x01 \x03(\v2\v.im.MessageR\x04msgs2\x8b\x01\n" +
+	"\tIMService\x12A\n" +
 	"\fStoreMessage\x12\x17.im.StoreMessageRequest\x1a\x18.im.StoreMessageResponse\x12;\n" +
 	"\n" +
 	"GetHistory\x12\x15.im.GetHistoryRequest\x1a\x16.im.GetHistoryResponseB\x06Z\x04./imb\x06proto3"
 
 var (
-	file_im_im_proto_rawDescOnce sync.Once
-	file_im_im_proto_rawDescData []byte
+	file_im_proto_rawDescOnce sync.Once
+	file_im_proto_rawDescData []byte
 )
 
-func file_im_im_proto_rawDescGZIP() []byte {
-	file_im_im_proto_rawDescOnce.Do(func() {
-		file_im_im_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_im_im_proto_rawDesc), len(file_im_im_proto_rawDesc)))
+func file_im_proto_rawDescGZIP() []byte {
+	file_im_proto_rawDescOnce.Do(func() {
+		file_im_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_im_proto_rawDesc), len(file_im_proto_rawDesc)))
 	})
-	return file_im_im_proto_rawDescData
+	return file_im_proto_rawDescData
 }
 
-var file_im_im_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
-var file_im_im_proto_goTypes = []any{
+var file_im_proto_msgTypes = make([]protoimpl.MessageInfo, 5)
+var file_im_proto_goTypes = []any{
 	(*Message)(nil),              // 0: im.Message
 	(*StoreMessageRequest)(nil),  // 1: im.StoreMessageRequest
 	(*StoreMessageResponse)(nil), // 2: im.StoreMessageResponse
 	(*GetHistoryRequest)(nil),    // 3: im.GetHistoryRequest
 	(*GetHistoryResponse)(nil),   // 4: im.GetHistoryResponse
 }
-var file_im_im_proto_depIdxs = []int32{
+var file_im_proto_depIdxs = []int32{
 	0, // 0: im.StoreMessageRequest.msg:type_name -> im.Message
 	0, // 1: im.GetHistoryResponse.msgs:type_name -> im.Message
-	1, // 2: im.IM.StoreMessage:input_type -> im.StoreMessageRequest
-	3, // 3: im.IM.GetHistory:input_type -> im.GetHistoryRequest
-	2, // 4: im.IM.StoreMessage:output_type -> im.StoreMessageResponse
-	4, // 5: im.IM.GetHistory:output_type -> im.GetHistoryResponse
+	1, // 2: im.IMService.StoreMessage:input_type -> im.StoreMessageRequest
+	3, // 3: im.IMService.GetHistory:input_type -> im.GetHistoryRequest
+	2, // 4: im.IMService.StoreMessage:output_type -> im.StoreMessageResponse
+	4, // 5: im.IMService.GetHistory:output_type -> im.GetHistoryResponse
 	4, // [4:6] is the sub-list for method output_type
 	2, // [2:4] is the sub-list for method input_type
 	2, // [2:2] is the sub-list for extension type_name
@@ -365,26 +365,26 @@ var file_im_im_proto_depIdxs = []int32{
 	0, // [0:2] is the sub-list for field type_name
 }
 
-func init() { file_im_im_proto_init() }
-func file_im_im_proto_init() {
-	if File_im_im_proto != nil {
+func init() { file_im_proto_init() }
+func file_im_proto_init() {
+	if File_im_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_im_im_proto_rawDesc), len(file_im_im_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_im_proto_rawDesc), len(file_im_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   5,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
-		GoTypes:           file_im_im_proto_goTypes,
-		DependencyIndexes: file_im_im_proto_depIdxs,
-		MessageInfos:      file_im_im_proto_msgTypes,
+		GoTypes:           file_im_proto_goTypes,
+		DependencyIndexes: file_im_proto_depIdxs,
+		MessageInfos:      file_im_proto_msgTypes,
 	}.Build()
-	File_im_im_proto = out.File
-	file_im_im_proto_goTypes = nil
-	file_im_im_proto_depIdxs = nil
+	File_im_proto = out.File
+	file_im_proto_goTypes = nil
+	file_im_proto_depIdxs = nil
 }

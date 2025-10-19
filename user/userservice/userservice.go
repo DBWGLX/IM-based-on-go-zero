@@ -2,7 +2,7 @@
 // goctl 1.9.2
 // Source: user.proto
 
-package userclient
+package userservice
 
 import (
 	"context"
@@ -21,34 +21,34 @@ type (
 	UserInfoRequest  = user.UserInfoRequest
 	UserInfoResponse = user.UserInfoResponse
 
-	User interface {
+	UserService interface {
 		Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error)
 		Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error)
 		GetUserInfo(ctx context.Context, in *UserInfoRequest, opts ...grpc.CallOption) (*UserInfoResponse, error)
 	}
 
-	defaultUser struct {
+	defaultUserService struct {
 		cli zrpc.Client
 	}
 )
 
-func NewUser(cli zrpc.Client) User {
-	return &defaultUser{
+func NewUserService(cli zrpc.Client) UserService {
+	return &defaultUserService{
 		cli: cli,
 	}
 }
 
-func (m *defaultUser) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
+func (m *defaultUserService) Login(ctx context.Context, in *LoginRequest, opts ...grpc.CallOption) (*LoginResponse, error) {
 	client := user.NewUserServiceClient(m.cli.Conn())
 	return client.Login(ctx, in, opts...)
 }
 
-func (m *defaultUser) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
+func (m *defaultUserService) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterResponse, error) {
 	client := user.NewUserServiceClient(m.cli.Conn())
 	return client.Register(ctx, in, opts...)
 }
 
-func (m *defaultUser) GetUserInfo(ctx context.Context, in *UserInfoRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
+func (m *defaultUserService) GetUserInfo(ctx context.Context, in *UserInfoRequest, opts ...grpc.CallOption) (*UserInfoResponse, error) {
 	client := user.NewUserServiceClient(m.cli.Conn())
 	return client.GetUserInfo(ctx, in, opts...)
 }

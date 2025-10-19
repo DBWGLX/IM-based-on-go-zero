@@ -2,7 +2,7 @@
 // versions:
 // - protoc-gen-go-grpc v1.5.1
 // - protoc             v3.6.1
-// source: im/im.proto
+// source: im.proto
 
 package im
 
@@ -19,145 +19,145 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	IM_StoreMessage_FullMethodName = "/im.IM/StoreMessage"
-	IM_GetHistory_FullMethodName   = "/im.IM/GetHistory"
+	IMService_StoreMessage_FullMethodName = "/im.IMService/StoreMessage"
+	IMService_GetHistory_FullMethodName   = "/im.IMService/GetHistory"
 )
 
-// IMClient is the client API for IM service.
+// IMServiceClient is the client API for IMService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 //
 // IM服务
-type IMClient interface {
+type IMServiceClient interface {
 	StoreMessage(ctx context.Context, in *StoreMessageRequest, opts ...grpc.CallOption) (*StoreMessageResponse, error)
 	GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error)
 }
 
-type iMClient struct {
+type iMServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewIMClient(cc grpc.ClientConnInterface) IMClient {
-	return &iMClient{cc}
+func NewIMServiceClient(cc grpc.ClientConnInterface) IMServiceClient {
+	return &iMServiceClient{cc}
 }
 
-func (c *iMClient) StoreMessage(ctx context.Context, in *StoreMessageRequest, opts ...grpc.CallOption) (*StoreMessageResponse, error) {
+func (c *iMServiceClient) StoreMessage(ctx context.Context, in *StoreMessageRequest, opts ...grpc.CallOption) (*StoreMessageResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(StoreMessageResponse)
-	err := c.cc.Invoke(ctx, IM_StoreMessage_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, IMService_StoreMessage_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *iMClient) GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error) {
+func (c *iMServiceClient) GetHistory(ctx context.Context, in *GetHistoryRequest, opts ...grpc.CallOption) (*GetHistoryResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(GetHistoryResponse)
-	err := c.cc.Invoke(ctx, IM_GetHistory_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, IMService_GetHistory_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// IMServer is the server API for IM service.
-// All implementations must embed UnimplementedIMServer
+// IMServiceServer is the server API for IMService service.
+// All implementations must embed UnimplementedIMServiceServer
 // for forward compatibility.
 //
 // IM服务
-type IMServer interface {
+type IMServiceServer interface {
 	StoreMessage(context.Context, *StoreMessageRequest) (*StoreMessageResponse, error)
 	GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error)
-	mustEmbedUnimplementedIMServer()
+	mustEmbedUnimplementedIMServiceServer()
 }
 
-// UnimplementedIMServer must be embedded to have
+// UnimplementedIMServiceServer must be embedded to have
 // forward compatible implementations.
 //
 // NOTE: this should be embedded by value instead of pointer to avoid a nil
 // pointer dereference when methods are called.
-type UnimplementedIMServer struct{}
+type UnimplementedIMServiceServer struct{}
 
-func (UnimplementedIMServer) StoreMessage(context.Context, *StoreMessageRequest) (*StoreMessageResponse, error) {
+func (UnimplementedIMServiceServer) StoreMessage(context.Context, *StoreMessageRequest) (*StoreMessageResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoreMessage not implemented")
 }
-func (UnimplementedIMServer) GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error) {
+func (UnimplementedIMServiceServer) GetHistory(context.Context, *GetHistoryRequest) (*GetHistoryResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetHistory not implemented")
 }
-func (UnimplementedIMServer) mustEmbedUnimplementedIMServer() {}
-func (UnimplementedIMServer) testEmbeddedByValue()            {}
+func (UnimplementedIMServiceServer) mustEmbedUnimplementedIMServiceServer() {}
+func (UnimplementedIMServiceServer) testEmbeddedByValue()                   {}
 
-// UnsafeIMServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to IMServer will
+// UnsafeIMServiceServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to IMServiceServer will
 // result in compilation errors.
-type UnsafeIMServer interface {
-	mustEmbedUnimplementedIMServer()
+type UnsafeIMServiceServer interface {
+	mustEmbedUnimplementedIMServiceServer()
 }
 
-func RegisterIMServer(s grpc.ServiceRegistrar, srv IMServer) {
-	// If the following call pancis, it indicates UnimplementedIMServer was
+func RegisterIMServiceServer(s grpc.ServiceRegistrar, srv IMServiceServer) {
+	// If the following call pancis, it indicates UnimplementedIMServiceServer was
 	// embedded by pointer and is nil.  This will cause panics if an
 	// unimplemented method is ever invoked, so we test this at initialization
 	// time to prevent it from happening at runtime later due to I/O.
 	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
 		t.testEmbeddedByValue()
 	}
-	s.RegisterService(&IM_ServiceDesc, srv)
+	s.RegisterService(&IMService_ServiceDesc, srv)
 }
 
-func _IM_StoreMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _IMService_StoreMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(StoreMessageRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IMServer).StoreMessage(ctx, in)
+		return srv.(IMServiceServer).StoreMessage(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: IM_StoreMessage_FullMethodName,
+		FullMethod: IMService_StoreMessage_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IMServer).StoreMessage(ctx, req.(*StoreMessageRequest))
+		return srv.(IMServiceServer).StoreMessage(ctx, req.(*StoreMessageRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _IM_GetHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _IMService_GetHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetHistoryRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(IMServer).GetHistory(ctx, in)
+		return srv.(IMServiceServer).GetHistory(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: IM_GetHistory_FullMethodName,
+		FullMethod: IMService_GetHistory_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(IMServer).GetHistory(ctx, req.(*GetHistoryRequest))
+		return srv.(IMServiceServer).GetHistory(ctx, req.(*GetHistoryRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// IM_ServiceDesc is the grpc.ServiceDesc for IM service.
+// IMService_ServiceDesc is the grpc.ServiceDesc for IMService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var IM_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "im.IM",
-	HandlerType: (*IMServer)(nil),
+var IMService_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "im.IMService",
+	HandlerType: (*IMServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "StoreMessage",
-			Handler:    _IM_StoreMessage_Handler,
+			Handler:    _IMService_StoreMessage_Handler,
 		},
 		{
 			MethodName: "GetHistory",
-			Handler:    _IM_GetHistory_Handler,
+			Handler:    _IMService_GetHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "im/im.proto",
+	Metadata: "im.proto",
 }

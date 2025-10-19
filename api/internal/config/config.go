@@ -10,10 +10,10 @@ import (
 
 type Config struct {
 	rest.RestConf
-	Auth struct {
-		AccessSecret string
-		AccessExpire int64
-	}
+	// Auth struct {
+	// 	AccessSecret string
+	// 	AccessExpire int64
+	// }
 
 	IMRpc   zrpc.RpcClientConf
 	UserRpc zrpc.RpcClientConf
